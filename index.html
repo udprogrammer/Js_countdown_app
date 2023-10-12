@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2-Minute Countdown</title>
+  </head>
+  <body>
+    <h1 id="Minutes"></h1>
+    <h1 id="Seconds"></h1>
+  </body>
+  <script>
+    let LocalTime = new Date().getTime() + 120000;
+
+    var minutes, seconds;
+
+    function getTime() {
+      let cuurentTime = new Date().getTime();
+
+      let Time = (LocalTime - cuurentTime) / 1000;
+
+      minutes = timeNumber(parseInt(Time / 60));
+      seconds = timeNumber(parseInt(Time % 60));
+
+      document.getElementById("Minutes").innerHTML = minutes;
+      document.getElementById("Seconds").innerHTML = seconds;
+    }
+
+    function timeNumber(num) {
+      return (num < 10 ? "0" : "") + num;
+    }
+
+    setInterval(function () {
+      getTime();
+    }, 1000);
+  </script>
+</html>
